@@ -5,3 +5,7 @@
 .blog-meta, .post-meta {
 	color:  #727272;
 }
+
+.image-tovar {
+	max-height: 200px;
+}
