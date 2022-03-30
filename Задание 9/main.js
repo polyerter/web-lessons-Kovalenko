@@ -8,7 +8,7 @@ function getRandomInt(max) {
 function handler() {
  let colors = ['#000','#8f9873','#d10374','#09f919','#f8d555','#8c0444'];
  
- this.style.background = colors[getRandomInt(6)];
+ this.style.background = colors[getRandomInt(colors.length)];
  
  console.log(this);
 }
