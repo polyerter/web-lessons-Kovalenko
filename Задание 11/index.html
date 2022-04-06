@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Группы</title>
+</head>
+<body>
+
+<script>
+	function getRandomInt(max) {
+  		return Math.floor(Math.random() * max);
+    }
+
+	let members = ['Eli P. Webster', 'Sylvia K. Jenkins', 'Daniel S. Oceguera',
+                'Valerie A. Everett', 'Miguel K. Yohe', 'Annette T. Boyce',
+			     'Ernestine J. Norberg', 'Henry E. Wheless', 'Duane M. McCarroll',
+				'David E. Thomas', 'Myra J. Wells', 'Xavier C. Schulz', 'Zackary M. Majors',
+			    'David C. Bowers'
+	];
+
+	let gorup1 = [];
+	let gorup2 = [];
+
+	function add_to_group () {
+		let index = getRandomInt(members.length - 1);
+		gorup1.push(members[index]);
+		members.splice(index, 1);
+		console.log(members);
+	}
+
+	add_to_group ();
+
+	
+	
+	
+	console.log(gorup1, gorup2);
+    
+
+	
+	
+	//alert('helloy, word');
+</script>
+</body>
+</html>
