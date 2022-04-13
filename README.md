@@ -3,38 +3,44 @@ function getRandomInt(max) {
 }
 
 let members = [
-  "Eli P. Webster",
-  "Sylvia K. Jenkins",
-  "Daniel S. Oceguera",
-  "Valerie A. Everett",
-  "Miguel K. Yohe",
-  "Annette T. Boyce",
-  "Ernestine J. Norberg",
-  "Henry E. Wheless",
-  "Duane M. McCarroll",
-  "David E. Thomas",
-  "Myra J. Wells",
-  "Xavier C. Schulz",
-  "Zackary M. Majors",
-  "David C. Bowers"
+  "Amanda Murphy",
+  "Ernesto Walton",
+  "Antoinette Thornton",
+  "Otis Lloyd",
+  "Dana Haynes",
+  "Lester Myers",
+  "Emily Graham",
+  "Amos Mcbride",
+  "Bryan Berry",
+  "Carlton Barnes",
+  "Ken Floyd",
+  "Shannon Johnston",
+  "Louis Mccormick",
+  "Leon Leonard",
 ];
 
-//let group1 = [];
-//let group2 = [];
-
 let groups = {
-  'group1': [],
-  'group2': [],
+  group1: [],
+  group2: [],
 };
 
-let count_group = Object.keys(groups).length;
+function group_generate() {
+  let count_group = Object.keys(groups).length;
+  let div = members.length % count_group;
+  if (div != 0) {
+    console.log("Не хватает участников: ", count_group - div); 
+ 
+    return;
+  }
+  let count_in_group = members.length / count_group;
+  console.log("Колличество в группе: ", count_in_group);
 
-if (members.length % count_group != 0) {
-  console.log('Не хватает участников');
+  for (let i = 0; i < count_in_group; i++) {
+    for (const [key, value] of Object.entries(groups)) {
+      add_to_group(groups[key]);
+    }
+  }
 }
-
-let count_in_group = members.length / count_group;
-console.log('Количество в группе:', count_in_group)
 
 function add_to_group(group) {
   let index = getRandomInt(members.length - 1);
@@ -42,11 +48,5 @@ function add_to_group(group) {
   members.splice(index, 1);
 }
 
-//for (let i=0; i<)
-add_to_group(groups.group1);
-
-
-//add_to_group(groups.group2);
-
-console.log(count_group);
-console.log(members);
+group_generate();
+console.log(groups);
