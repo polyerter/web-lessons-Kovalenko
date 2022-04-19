@@ -1,3 +1,5 @@
+<button id='btn' onclick="group_generate()">Распределить группы</button>
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -16,20 +18,20 @@ let members = [
   "Ken Floyd",
   "Shannon Johnston",
   "Louis Mccormick",
-  "Leon Leonard",
+  "Leon Leonard"
 ];
 
 let groups = {
   group1: [],
-  group2: [],
+  group2: []
 };
 
 function group_generate() {
   let count_group = Object.keys(groups).length;
   let div = members.length % count_group;
   if (div != 0) {
-    console.log("Не хватает участников: ", count_group - div); 
- 
+    console.log("Не хватает участников: ", count_group - div);
+
     return;
   }
   let count_in_group = members.length / count_group;
@@ -40,6 +42,8 @@ function group_generate() {
       add_to_group(groups[key]);
     }
   }
+  
+  console.log(groups);
 }
 
 function add_to_group(group) {
@@ -48,5 +52,24 @@ function add_to_group(group) {
   members.splice(index, 1);
 }
 
-group_generate();
-console.log(groups);
+for (const [key, group] of Object.entries(groups)) {
+  let newBtn = document.createElement("button");
+  newBtn.innerText = `Добавить в группу ${key}`;
+  
+  newBtn.addEventListener('click', function () {
+    add_to_group(group);
+    console.log(groups);
+  });
+  
+  
+  
+  
+  
+  
+  
+  
+  document.body.appendChild(newBtn);
+}
+
+//group_generate();
+//console.log(groups);
