@@ -1,5 +1,11 @@
 <button id='btn' onclick="group_generate()">Распределить группы</button>
 
+<button id='show' onclick="show()">Показать группы</button>
+
+<div id="groups"></div>
+
+<div id="group_list"></div>
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -42,8 +48,6 @@ function group_generate() {
       add_to_group(groups[key]);
     }
   }
-  
-  console.log(groups);
 }
 
 function add_to_group(group) {
@@ -59,17 +63,11 @@ for (const [key, group] of Object.entries(groups)) {
   newBtn.addEventListener('click', function () {
     add_to_group(group);
     console.log(groups);
-  });
+  }); 
   
-  
-  
-  
-  
-  
-  
-  
-  document.body.appendChild(newBtn);
+  document.getElementById('groups').appendChild(newBtn);
 }
 
-//group_generate();
-//console.log(groups);
+function show() {
+  console.log(groups);
+}
