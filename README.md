@@ -1,73 +1,60 @@
-<button id='btn' onclick="group_generate()">Распределить группы</button>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js">
+</script>
 
-<button id='show' onclick="show()">Показать группы</button>
+<ul>
+  <li>
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+  </li>
+  <li>
+    Aliquam tincidunt mauris eu risus.
+  </li>
+  <li>
+    Vestibulum auctor dapibus neque.
+  </li>
+  <li>
+    Nunc dignissim risus id metus.
+  </li>
+  <li>
+    Cras ornare tristique elit.
+  </li>
+  <li>
+    Vivamus vestibulum ntulla nec ante.
+  </li>
+</ul>
 
-<div id="groups"></div>
 
-<div id="group_list"></div>
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
+let link = 'https://st2.depositphotos.com/1064024/10769/i/600/depositphotos_107694484-stock-photo-little-boy.jpg';
 
-let members = [
-  "Amanda Murphy",
-  "Ernesto Walton",
-  "Antoinette Thornton",
-  "Otis Lloyd",
-  "Dana Haynes",
-  "Lester Myers",
-  "Emily Graham",
-  "Amos Mcbride",
-  "Bryan Berry",
-  "Carlton Barnes",
-  "Ken Floyd",
-  "Shannon Johnston",
-  "Louis Mccormick",
-  "Leon Leonard"
-];
-
-let groups = {
-  group1: [],
-  group2: []
-};
-
-function group_generate() {
-  let count_group = Object.keys(groups).length;
-  let div = members.length % count_group;
-  if (div != 0) {
-    console.log("Не хватает участников: ", count_group - div);
-
-    return;
-  }
-  let count_in_group = members.length / count_group;
-  console.log("Колличество в группе: ", count_in_group);
-
-  for (let i = 0; i < count_in_group; i++) {
-    for (const [key, value] of Object.entries(groups)) {
-      add_to_group(groups[key]);
-    }
-  }
-}
-
-function add_to_group(group) {
-  let index = getRandomInt(members.length - 1);
-  group.push(members[index]);
-  members.splice(index, 1);
-}
-
-for (const [key, group] of Object.entries(groups)) {
-  let newBtn = document.createElement("button");
-  newBtn.innerText = `Добавить в группу ${key}`;
+$("ul")
+  .css({
+    background: "red",
+    color: "#fff",
+    "font-size": "20px"
+  })
+  .find("li")
+//  .html("<h1>Hello word</h1>")
+  .on('click', function () {
+  let img = $('<img/>', {
+    src: link
+  });
   
-  newBtn.addEventListener('click', function () {
-    add_to_group(group);
-    console.log(groups);
-  }); 
+  img.css ({
+    widht: '100px',
+    height: '200px',
+  });
   
-  document.getElementById('groups').appendChild(newBtn);
-}
+  img.on('click', function () {
+    $(this).css({
+       widht: '300px',
+       height: '400px',
+    })
+  });
+  
+  $(this).append(img);
+  //$(this).html(`<img src='${link}' \>`);
+ // $(this).remove(); 
+ //$(this).css('font-size', '10px')
+  //console.log(this)
+});
 
-function show() {
-  console.log(groups);
-}
