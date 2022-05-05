@@ -24,26 +24,41 @@ function showSlide(i) {
 	let slides = document.getElementsByClassName('custom-carousel-item');
 	let length = slides.length - 1;
 	
-	if (i < 1) {
+	if (i < 0) { // FIX
 		slade = length;
 	}
 	
 	if (i > length) {
 		slade = 0;
 	}
+
 	
 	for (let element of slides) {
-    element.classList.remove('active');
-  }
-
-  slides[slade].classList.add('active');
-  
+    	element.classList.remove('active');
+  	}
+	
+  	slides[slade].classList.add('active');
+	
+	// FIX start
+	for (let dot of dots) {
+    	dot.classList.remove('active');
+  	}
+  	dots[slade].classList.add('active');
+  	// FIX end
 }
 
 //Здесь в чём-то ошибка. Без нижнего кода слайдер работает, но с ним ни кнопки, ни сам слайдер не срабатывает.
 
-dots.forEach((custom-carousel-item, sladeDot) => {
-	custom-carousel-item.addEventListener('click', () => {
-		slade = sladeDot;
-	}
-}
+// FIX start
+dots.forEach((el, indx)=>{
+	el.addEventListener('click', () => {
+		showSlide(slade = indx);
+	});
+})
+// FIX end
+
+// dots.forEach((custom-carousel-item, sladeDot) => {
+// 	custom-carousel-item.addEventListener('click', () => {
+// 		slade = sladeDot;
+// 	}
+// }
